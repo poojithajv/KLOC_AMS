@@ -84,6 +84,7 @@ function JavaTest() {
       renderCell: (params) => (
         <button
           onClick={() => navigate("/studentChart", { state: params.row })}
+          style={{width:'60px',padding:'5px'}}
         >
           View
         </button>
@@ -108,33 +109,33 @@ function JavaTest() {
         </div>
         <div className='admin-desktop-header-navbar-container'>
           {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
-          <p
+          {/* <p
             onClick={() => navigate("/dashboard", { state: data })}
             className='admin-desktop-header-navbar-link'
           >
             Dashboard
-          </p>
+          </p> */}
           {/* when clicking this Assessments text, it'll navigates to send assessments route */}
-          <p
+          {/* <p
             onClick={() => navigate("/sendAssessments", { state: data })}
             className='admin-desktop-header-navbar-link'
           >
             Assessments
-          </p>
+          </p> */}
           {/* when clicking this Test Reports text, it'll navigates to test reports route */}
-          <p
+          {/* <p
             onClick={() => navigate("/testReports", { state: data })}
             className='admin-desktop-header-navbar-link'
           >
             Test Reports
-          </p>
+          </p> */}
           {/* when clicking this student reports text, it'll navigates to student reports route */}
-          <p
+          {/* <p
             onClick={() => navigate("/studentReports", { state: data })}
             className='admin-desktop-header-navbar-link'
           >
             Student Reports
-          </p>
+          </p> */}
           {/* when clicking this Sign Out text, it'll navigates to admin login route and again admin can access all routes */}
           <p
             className='admin-desktop-header-navbar-link'

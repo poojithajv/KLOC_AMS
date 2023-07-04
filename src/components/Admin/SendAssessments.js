@@ -65,7 +65,7 @@ const Assessment = () => {
     //cookies token is for validation of admin
     const token = Cookies.get("token");
     if (!token) {
-      navigate("/notFound");
+      navigate("/unauthorized");
     }
 
     setStudentCount(1);
@@ -103,7 +103,7 @@ const Assessment = () => {
         {
           to_name: student.name,
           from_name: "kloc",
-          message: `You have been invited to write ${student.test}. \n Your login email is ${student.email} and Test pin in ${student.uniqueId}. \n Test Link : http://localhost:3000/studentLogin`,
+          message:  student.uniqueId,
           to_email: student.email,
         },
         "MkG09aTM7gyK7zTog"

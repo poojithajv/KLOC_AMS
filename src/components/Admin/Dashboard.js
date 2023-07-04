@@ -351,7 +351,7 @@ const Dashboard = () => {
   useEffect(() => {
     const token = Cookies.get("token");
     if (!token) {
-      navigate("/notFound");
+      navigate("/unauthorized");
     }
   }, []);
 

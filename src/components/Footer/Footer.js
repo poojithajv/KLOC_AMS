@@ -5,6 +5,7 @@ function Footer() {
   return (
     <div className='footer'>
       <div className='sb__footer section__padding'>
+        
         <hr />
         <div className='sb__footer-below'>
           <div className='sb__footer-copyright'>

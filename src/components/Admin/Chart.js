@@ -187,34 +187,34 @@ function Chart() {
           />
         </div>
         <div className="admin-desktop-header-navbar-container">
-          {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
+          {/* when clicking this Dashboard text, it'll navigates to dashboard route
           <p
             onClick={() => navigate("/dashboard")}
             className="admin-desktop-header-navbar-link"
           >
             Dashboard
-          </p>
+          </p> */}
           {/* when clicking this Assessments text, it'll navigates to send assessments route */}
-          <p
+          {/* <p
             onClick={() => navigate("/sendAssessments")}
             className="admin-desktop-header-navbar-link"
           >
             Assessments
-          </p>
+          </p> */}
           {/* when clicking this Test Reports text, it'll navigates to test reports route */}
-          <p
+          {/* <p
             onClick={() => navigate("/testReports")}
             className="admin-desktop-header-navbar-link"
           >
             Test Reports
-          </p>
+          </p> */}
           {/* when clicking this student reports text, it'll navigates to student reports route */}
-          <p
+          {/* <p
             onClick={() => navigate("/studentReports")}
             className="admin-desktop-header-navbar-link"
           >
             Student Reports
-          </p>
+          </p> */}
           {/* when clicking this Sign Out text, it'll navigates to admin login route and again admin can access all routes */}
           <p
             className="admin-desktop-header-navbar-link"
@@ -236,37 +236,37 @@ function Chart() {
           >
             <ul className="admin-mobile-hamburger-menu">
               {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
-              <li
+              {/* <li
                 onClick={() => navigate("/dashboard")}
                 className="admin-header-navbar-link"
               >
                 Dashboard
-              </li>
+              </li> */}
               {/* when clicking this Assessments text, it'll navigates to send assessments route */}
-              <li
+              {/* <li
                 onClick={() =>
                   navigate("/sendAssessments")
                 }
                 className="admin-header-navbar-link"
               >
                 Assessments
-              </li>
+              </li> */}
               {/* when clicking this Test Reports text, it'll navigates to test reports route */}
-              <li
+              {/* <li
                 onClick={() => navigate("/testReports")}
                 className="admin-header-navbar-link"
               >
                 Test Reports
-              </li>
+              </li> */}
               {/* when clicking this student reports text, it'll navigates to student reports route */}
-              <li
+              {/* <li
                 onClick={() =>
                   navigate("/studentReports")
                 }
                 className="admin-header-navbar-link"
               >
                 Student Reports
-              </li>
+              </li> */}
               {/* when clicking this Sign Out text, it'll navigates to admin login route and again admin can access all routes */}
               <li
                 onClick={() => navigate("/adminLogin")}

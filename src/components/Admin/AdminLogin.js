@@ -400,7 +400,7 @@ const AdminLogin = () => {
           Cookies.set("token", loginId, { expires: 30 });
           // if email does not exists, notFound component will render
         } else {
-          navigate("/notFound");
+          navigate("/unauthorized");
         }
         // userEmail value is set to the email
         setUserEmail(email);

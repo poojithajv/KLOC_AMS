@@ -71,10 +71,15 @@ function Home() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          marginTop:'200px'
+          marginTop:'200px',
+          fontSize:'40px',
+          fontWeight:'bold',
+          textAlign:'center'
         }}
       >
-        KLOC HIREME
+        Welcome to Assessments Made Simple
+        <br />
+        KLoc Technologies Pvt Ltd
       </div>
       </div>
       <Footer />

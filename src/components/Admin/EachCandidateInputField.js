@@ -74,7 +74,7 @@ const EachCandidateInputField = ({ onInputChange }) => {
         </div>
         <div className="label-input">
         <label htmlFor='outlined-basic-1' className="label-assessment">
-          Test Date:
+          Test End Date:
         </label>
         <input
           id="outlined-basic-4"

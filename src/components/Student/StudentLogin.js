@@ -11,23 +11,17 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-// import Footer from '../Footer/Footer'
-
 // for getting random background images
 const defaultTheme = createTheme();
-
 export default function StudentLogin() {
   const [email, setEmail] = useState("");
   const [testKey, setTestKey] = useState(""); // testKey is for store testKey taken from candidate
   const [message, setMessage] = useState(""); //message variable is used for store and show that message in login page
   const navigate = useNavigate();
-
   // trigger after submit button clicked
   const handleSubmit = (event) => {
     event.preventDefault();
-
     const key = "AIzaSyAz1z7QqYvovxmnO-lvzoORcMC1UZzXNRE"; // this key was used in apps script for authentication (don't change this key)
-
     // checks if email or password are empty
     if (email === "" || testKey === "") {
       setMessage("Fill the Required fields");
@@ -42,10 +36,10 @@ export default function StudentLogin() {
           .then((response) => response.json())
           .then((result) => {
             // filter the student based on test key
+            console.log(result.data, "sriram");
             const filteredData = result.data.find(
               (item) => item.uniqueId === testKey
             );
-
             if (filteredData === undefined) {
               setMessage("You don't have access to write this test");
             } else if (filteredData.isCompleted === "incomplete") {
@@ -56,18 +50,17 @@ export default function StudentLogin() {
               ) {
                 setMessage("You can write the Test");
                 const testName = filteredData.test;
-
                 const apiKey = "AIzaSyAz1z7QqYvovxmnO-lvzoORcMC1UZzXNRE"; // this key was used in apps script for authentication (don't change this key)
-
                 // it will direct to test path with stateValue of testName
-                navigate(`/test/${testName}`, { state: testName });
-
+                navigate(`/test/${testName}`, { state: { testName, email } });
                 // it will update the googleSheet as test completed
-                fetch(
-                  `https://script.google.com/macros/s/AKfycbyZ1M9Wiq5XVZwik3Pe-HvaLaklv_USkK15l5GLzMjtHXDND9cXzbmNraolbnGlUIS9Ig/exec?key=${apiKey}&uniqueId=${testKey}`
-                )
-                  .then((response) => console.log(response))
-                  .catch((err) => console.log(err));
+                setTimeout(() => {
+                  fetch(
+                    `https://script.google.com/macros/s/AKfycbyZ1M9Wiq5XVZwik3Pe-HvaLaklv_USkK15l5GLzMjtHXDND9cXzbmNraolbnGlUIS9Ig/exec?key=${apiKey}&uniqueId=${testKey}`
+                  )
+                    .then((response) => console.log(response))
+                    .catch((err) => console.log(err));
+                }, 1 * 60 * 1000);
               } //if test key and mail ID does't match
               else {
                 setMessage("Your email end password mismatch");
@@ -84,6 +77,10 @@ export default function StudentLogin() {
             else {
               setMessage("You already completed the test");
             }
+          })
+          .catch((err) => {
+            console.log(err);
+            setMessage("Something went wrong");
           });
       } catch (err) {
         setMessage("Something went wrong");
@@ -165,7 +162,6 @@ export default function StudentLogin() {
                   onChange={(event) => setTestKey(event.target.value)}
                   autoComplete='current-password'
                 />
-
                 <Button
                   type='submit'
                   fullWidth
@@ -181,7 +177,6 @@ export default function StudentLogin() {
           </Grid>
         </Grid>
       </ThemeProvider>
-      {/* <Footer /> */}
     </div>
   );
 }

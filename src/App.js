@@ -22,6 +22,7 @@ import NotFound from "./components/Admin/NotFound";
 import StudentReports from "./components/Admin/StudentReports";
 import Chart from "./components/Admin/Chart";
 import AllTests from "./components/Student/StudentTest";
+import AdminUnauthorized from "./components/Admin/AdminUnauthorized";
 
 const App = () => {
   return (
@@ -75,6 +76,7 @@ const App = () => {
           element={<MernDeveloperIntermediateTabulation />}
         />
         <Route path="/notFound" element={<NotFound />} />
+        <Route path="/unauthorized" element={<AdminUnauthorized/>}/>
         {/* PieChart component */}
         <Route path="/studentChart" element={<Chart />} />
 

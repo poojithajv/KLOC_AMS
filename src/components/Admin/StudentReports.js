@@ -211,7 +211,7 @@ function StudentReports() {
     const token = Cookies.get("token");
     // if token is not in system it will redirects to notFound route
     if (!token) {
-      navigate("/notFound");
+      navigate("/unauthorized");
     }
     setFilterData(searchData);
     //console.log("triggered");

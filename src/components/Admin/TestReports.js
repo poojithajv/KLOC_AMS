@@ -92,7 +92,7 @@ const TestReports = () => {
     const token = Cookies.get("token");
     // if token is undefined, notFound Component will be navigated
     if (!token) {
-      navigate("/notFound");
+      navigate("/unauthorized");
     }
   }, []);
 
