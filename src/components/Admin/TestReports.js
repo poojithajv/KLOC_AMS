@@ -106,22 +106,22 @@ const TestReports = (props) => {
         <div className='test-container'>
           {testDetails.map((each, index) => {
             return (
-              <Card sx={{ width: 345, margin: "20px" }} key={index}>
+              <Card sx={{ width: 200, margin: "20px" }} key={index}>
                 <CardActionArea>
                   <CardMedia
                     component='img'
-                    height='140'
+                    height='100'
                     image={each.url}
                     alt='green iguana'
                   />
                   <CardContent>
-                    <Typography gutterBottom variant='h5' component='div'>
+                    <Typography gutterBottom variant='h6' component='div' style={{fontSize:'12px',marginBottom:'-30px'}}>
                       {each.name}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
                 <Button
-                  sx={{ margin: "20px" }}
+                  sx={{ margin: "20px",width:'60px',height:'30px',fontSize:'10px' }}
                   variant='contained'
                   // clicking view button it'll navigates to respective test tabulation routes
                   onClick={() =>

@@ -108,6 +108,13 @@ function JavaTest() {
           />
         </div>
         <div className='admin-desktop-header-navbar-container'>
+          {/* when clicking this Home text, it'll navigates to home route */}
+          <p
+            onClick={() => navigate("/")}
+            className="admin-desktop-header-navbar-link"
+          >
+            Home
+          </p>
           {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
           {/* <p
             onClick={() => navigate("/dashboard", { state: data })}
@@ -156,34 +163,41 @@ function JavaTest() {
             position='bottom right'
           >
             <ul className='admin-mobile-hamburger-menu'>
-              {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
+              {/* when clicking this Home text, it'll navigates to home route */}
               <li
+                onClick={() => navigate("/")}
+                className="admin-header-navbar-link"
+              >
+                Home
+              </li>
+              {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
+              {/* <li
                 onClick={() => navigate("/dashboard", { state: data })}
                 className='admin-header-navbar-link'
               >
                 Dashboard
               </li>
               {/* when clicking this Assessments text, it'll navigates to send assessments route */}
-              <li
+              {/* <li
                 onClick={() => navigate("/sendAssessments", { state: data })}
                 className='admin-header-navbar-link'
               >
                 Assessments
-              </li>
+              </li> */}
               {/* when clicking this Test Reports text, it'll navigates to test reports route */}
-              <li
+              {/* <li
                 onClick={() => navigate("/testReports", { state: data })}
                 className='admin-header-navbar-link'
               >
                 Test Reports
-              </li>
+              </li> */}
               {/* when clicking this student reports text, it'll navigates to student reports route */}
-              <li
+              {/* <li
                 onClick={() => navigate("/studentReports", { state: data })}
                 className='admin-header-navbar-link'
               >
                 Student Reports
-              </li>
+              </li>  */}
               {/* when clicking this Sign Out text, it'll navigates to admin login route and again admin can access all routes */}
               <li
                 onClick={() => navigate("/adminLogin")}

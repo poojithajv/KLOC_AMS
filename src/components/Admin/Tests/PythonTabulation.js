@@ -110,6 +110,13 @@ const PythonTest = () =>{
           />
         </div>
         <div className='admin-desktop-header-navbar-container'>
+          {/* when clicking this Home text, it'll navigates to home route */}
+          <p
+            onClick={() => navigate("/")}
+            className="admin-desktop-header-navbar-link"
+          >
+            Home
+          </p>
           {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
           {/* <p
             onClick={() => navigate("/dashboard", { state: data })}
@@ -158,6 +165,13 @@ const PythonTest = () =>{
             position='bottom right'
           >
             <ul className='admin-mobile-hamburger-menu'>
+              {/* when clicking this Home text, it'll navigates to home route */}
+              <li
+                onClick={() => navigate("/")}
+                className="admin-header-navbar-link"
+              >
+                Home
+              </li>
               {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
               {/* <li
                 onClick={() => navigate("/dashboard", { state: data })}

@@ -186,13 +186,13 @@ function Chart() {
           />
         </div>
         <div className="admin-desktop-header-navbar-container">
-          {/* when clicking this Dashboard text, it'll navigates to dashboard route
+          {/* when clicking this Home text, it'll navigates to home route */}
           <p
-            onClick={() => navigate("/dashboard")}
+            onClick={() => navigate("/")}
             className="admin-desktop-header-navbar-link"
           >
-            Dashboard
-          </p> */}
+            Home
+          </p>
           {/* when clicking this Assessments text, it'll navigates to send assessments route */}
           {/* <p
             onClick={() => navigate("/sendAssessments")}
@@ -234,13 +234,13 @@ function Chart() {
             position="bottom right"
           >
             <ul className="admin-mobile-hamburger-menu">
-              {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
-              {/* <li
-                onClick={() => navigate("/dashboard")}
+              {/* when clicking this Home text, it'll navigates to home route */}
+              <li
+                onClick={() => navigate("/")}
                 className="admin-header-navbar-link"
               >
-                Dashboard
-              </li> */}
+                Home
+              </li>
               {/* when clicking this Assessments text, it'll navigates to send assessments route */}
               {/* <li
                 onClick={() =>

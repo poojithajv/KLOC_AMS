@@ -218,7 +218,7 @@ const Assessment = () => {
       <div className='each-input-student-details-container'>
         {/* studentCount times adding EachCandidateInputField */}
         {/* if proceeding is true then only EachCandidateInputField and sendAssessments button shows in the page */}
-        {proceeding &&
+        {proceeding && 
           Array.from({ length: studentCount }, (_, index) => (
             <EachCandidateInputField
               key={index}
