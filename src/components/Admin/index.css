@@ -277,6 +277,7 @@
 }
 .test-chart{
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -292,7 +293,19 @@
   margin-bottom: 5px;
   margin-right: 20px;
 }
-@media screen and (max-width:1024px){
+@media screen and (min-width:1024px){
+  .test-chart{
+    flex-direction: row;
+  }
+  .piechart-details{
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .test-legend{
+    width:100%;
+  }
+}
+@media screen and (max-width:1023px){
   .test-legend{
     width:45%;
   }

@@ -71,17 +71,7 @@ const AdminLogin = () => {
           const authInstance = window.gapi.auth2.getAuthInstance();
           setIsSignedIn(authInstance.isSignedIn.get());
           authInstance.isSignedIn.listen(updateSignInStatus);
-          // execute request functions to get google sheet data responses for different tests
-          executeRequestFreshersTest();
-          executeRequestPythonTest();
-          executeRequestShopifyTest();
-          executeRequestFrontEndFresherTest();
-          executeRequestFullStackTest();
-          executeRequestMernDeveloperIntermediateTest();
-          executeRequestJavaTest()
-          executeRequestMernDeveloperJuniorTest()
-          executeRequestQATest()
-          executeRequestFreshersJuniorTest()
+          
           // get user email function
           getUserEmail();
         })
@@ -402,6 +392,17 @@ const AdminLogin = () => {
         const email = basicProfile.getEmail();
         // if email from the auth instance equals to the provided email then a unique loginid token will be created
         if (email === "klocprojectone@gmail.com") {
+          // execute request functions to get google sheet data responses for different tests
+          executeRequestFreshersTest();
+          executeRequestPythonTest();
+          executeRequestShopifyTest();
+          executeRequestFrontEndFresherTest();
+          executeRequestFullStackTest();
+          executeRequestMernDeveloperIntermediateTest();
+          executeRequestJavaTest()
+          executeRequestMernDeveloperJuniorTest()
+          executeRequestQATest()
+          executeRequestFreshersJuniorTest()
           const loginId = uuidv4();
           // Cookies.set method is used to set cookies for the login id token and expiration validity of 30 days
           Cookies.set("token", loginId, { expires: 30 });
@@ -953,7 +954,8 @@ useEffect(()=>{
             {/* header for desktop  with Logo and components Dashboard, Assessments, Test Reports, Student Reports and Sign Out */}
               <div className="admin-header-logo-container">
                     {/* logo */}
-                <img src="https://res.cloudinary.com/de5cu0mab/image/upload/v1688216997/KLoc_Square_Logo_-_400x400_ciw1ej.jpg" alt="logo" style={{height:'70px', width:'70px', borderRadius:'35px',padding:'8px'}} onClick={()=>navigate('/')}/>
+                <img src="https://res.cloudinary.com/de5cu0mab/image/upload/v1688216997/KLoc_Square_Logo_-_400x400_ciw1ej.jpg" 
+                alt="logo" style={{ height: "50px", width: "70px", borderRadius: "10px" }} onClick={()=>navigate('/')}/>
               </div>
               <div className="admin-desktop-header-navbar-container">
                   {/* when clicking this Dashboard text, it'll navigates to dashboard route */}

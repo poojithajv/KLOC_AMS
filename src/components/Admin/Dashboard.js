@@ -456,10 +456,10 @@ const Dashboard = (props) => {
             Filter
           </button>
         </div>
-        <h2 className="allmetricsHeading">
+        {filterData.length ? (<h2 className="allmetricsHeading">
           Below Metric is about number of tests taken by student for each test
           in percentage
-        </h2>  
+        </h2>) : null}
         <div style={{ textAlign: "center" }}>
           <button className="totaltestconductedbutton">
             Total Tests Conducted:
@@ -475,6 +475,8 @@ const Dashboard = (props) => {
               merndeveloperjunior.length}
           </button>
         </div>
+        {filterData.length ? ( 
+        <div>
         <div className="test-chart">
           <Chart
             className="allstremsPiechart"
@@ -497,7 +499,6 @@ const Dashboard = (props) => {
               legend: "none",
             }}
           ></Chart>
-        </div>
         <div className="piechart-details">
           <div className="test-legend">
             <button className="color"></button>
@@ -567,11 +568,14 @@ const Dashboard = (props) => {
             <span className="test">Shopify Developer Test</span>
           </div>
         </div>
+        </div>
+        </div>
+        ): null}
       </div>
-      <h3 className="allmetricsHeading">
+      {filterData.length ? (<h3 className="allmetricsHeading">
         Below Metrics are about percentage of each section which are correctly
         answered by students of different tests
-      </h3>
+      </h3>) : null}
       <div className="dashboard_chart_container">
           {fresher.length ? (
             <div>

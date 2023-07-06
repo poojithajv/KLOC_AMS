@@ -8,7 +8,6 @@ import jsPDF from "jspdf";
 import emailjs from "@emailjs/browser";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/button";
 import { useReactToPrint } from "react-to-print";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
@@ -372,8 +371,8 @@ function Chart() {
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
-          <Button
-          style={{backgroundColor:"#111359",marginTop:"-7px"}}
+          <button
+          style={{backgroundColor:"#111359",marginTop:"-7px",color:'white',padding:'3px'}}
             variant="primary"
             type="submit"
             
@@ -383,7 +382,7 @@ function Chart() {
             }}
           >
             Send Email
-          </Button>
+          </button>
         </Modal.Footer>
       </Modal>
     </div>
