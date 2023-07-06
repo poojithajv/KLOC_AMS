@@ -199,12 +199,11 @@ function FrontEndFresherTest() {
       </div>
       <h1 style={{textAlign:'center'}}>Front End Freshers Test Tabulation Data</h1>
       {/* desktop table container with table of Front End Fresher test data respones */}
-      <div className='d-none d-lg-block text-center'>
+      <div className='desktop-table'>
         {data.length > 0 ? (
           <div
             style={{
               minHeight: 100,
-              width: "95%",
               textAlign: "center",
               margin: "auto",
             }}

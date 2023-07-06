@@ -196,12 +196,11 @@ const FreshersTest = () =>{
       </div>
       <h1 style={{textAlign:'center'}}>Freshers Test Tabulation Data</h1>
       {/* desktop table container with table of Freshers test data respones */}
-      <div className='d-none d-lg-block text-center'>
+      <div className='desktop-table'>
         {data.length > 0 ? (
           <div
             style={{
               minHeight: 100,
-              width: "95%",
               textAlign: "center",
               margin: "auto",
             }}

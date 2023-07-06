@@ -16,10 +16,11 @@ import Cookies from "js-cookie";
 import Footer from '../Footer/Footer'
 import "./AdminLogin.css";
 
-const TestReports = () => {
+const TestReports = (props) => {
   // location varaiable to get location of the testReports route and state
+  const {datat}=props
   const location = useLocation();
-  const [data, setData] = useState(location.state);
+  const [data, setData] = useState(datat);
   // navigate variable used to naviagating to different routes
   const navigate = useNavigate();
   // created testDetails array that consists of all tests objects with keys name, id, url and data responses object
@@ -99,105 +100,6 @@ const TestReports = () => {
   return (
     <div>
     <div>
-      {/* header for desktop  with Logo and components Dashboard, Assessments, Test Reports, Student Reports and Admin */}
-      <div className='admin-header-container'>
-        <div className='admin-header-logo-container'>
-          {/* logo */}
-          <img
-            src='https://res.cloudinary.com/de5cu0mab/image/upload/v1688216997/KLoc_Square_Logo_-_400x400_ciw1ej.jpg'
-            alt='logo'
-            style={{ height: "50px", width: "70px", borderRadius: "10px" }}
-            onClick={() => navigate("/")}
-          />
-        </div>
-        <div className='admin-desktop-header-navbar-container'>
-          {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
-          <p
-            onClick={() => navigate("/dashboard", { state: data })}
-            className='admin-desktop-header-navbar-link'
-          >
-            Dashboard
-          </p>
-          {/* when clicking this Assessments text, it'll navigates to send assessments route */}
-          <p
-            onClick={() => navigate("/sendAssessments", { state: data })}
-            className='admin-desktop-header-navbar-link'
-          >
-            Assessments
-          </p>
-          {/* when clicking this Test Reports text, it'll navigates to test reports route */}
-          <p
-            onClick={() => navigate("/testReports", { state: data })}
-            className='admin-desktop-header-navbar-link'
-          >
-            Test Reports
-          </p>
-          {/* when clicking this student reports text, it'll navigates to student reports route */}
-          <p
-            onClick={() => navigate("/studentReports", { state: data })}
-            className='admin-desktop-header-navbar-link'
-          >
-            Student Reports
-          </p>
-          {/* when clicking this Sign Out text, it'll navigates to admin login route and again admin can access all routes */}
-          <p
-            className='admin-desktop-header-navbar-link'
-            onClick={() => navigate("/adminLogin")}
-          >
-            Admin
-          </p>
-        </div>
-        {/* nav header for mobile  with Logo and components Dashboard, Assessments, Test Reports, Student Reports and Admin */}
-        <div className='admin-mobile-header-navbar-container'>
-          <Popup
-            contentStyle={{ width: '70%',backgroundColor:"white",textAlign:'center',display:'flex',flexDirection:'column',justifyContent:'content',alignItems:'center' }}
-            trigger={
-              <button className='admin-hamburger-btn'>
-                <GiHamburgerMenu />
-              </button>
-            }
-            position='bottom right'
-          >
-            <ul className='admin-mobile-hamburger-menu'>
-              {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
-              <li
-                onClick={() => navigate("/dashboard", { state: data })}
-                className='admin-header-navbar-link'
-              >
-                Dashboard
-              </li>
-              {/* when clicking this Assessments text, it'll navigates to send assessments route */}
-              <li
-                onClick={() => navigate("/sendAssessments", { state: data })}
-                className='admin-header-navbar-link'
-              >
-                Assessments
-              </li>
-              {/* when clicking this Test Reports text, it'll navigates to test reports route */}
-              <li
-                onClick={() => navigate("/testReports", { state: data })}
-                className='admin-header-navbar-link'
-              >
-                Test Reports
-              </li>
-              {/* when clicking this student reports text, it'll navigates to student reports route */}
-              <li
-                onClick={() => navigate("/studentReports", { state: data })}
-                className='admin-header-navbar-link'
-              >
-                Student Reports
-              </li>
-              {/* when clicking this Sign Out text, it'll navigates to admin login route and again admin can access all routes */}
-              <li
-                onClick={() => navigate("/adminLogin")}
-                className='admin-header-navbar-link'
-              >
-                Admin
-              </li>
-            </ul>
-          </Popup>
-        </div>
-      </div>
       <div>
         <h1 style={{ textAlign: "center" }}>Test Reports</h1>
         {/* all tests cards */}
@@ -234,7 +136,6 @@ const TestReports = () => {
         </div>
       </div>
     </div>
-    <Footer />
     </div>
   );
 };

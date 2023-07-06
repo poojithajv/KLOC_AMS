@@ -197,12 +197,11 @@ function QATest() {
       </div>
       <h1 style={{textAlign:'center'}}>QA Test Tabulation Data</h1>
       {/* desktop table container with table of qa test data respones */}
-      <div className='d-none d-lg-block text-center'>
+      <div className='desktop-table'>
         {data.length > 0 ? (
           <div
             style={{
               minHeight: 100,
-              width: "95%",
               textAlign: "center",
               margin: "auto",
             }}

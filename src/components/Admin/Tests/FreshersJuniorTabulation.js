@@ -124,7 +124,6 @@ function FreshersJuniorTabulation() {
 
   return (
     <div>
-      <div className="test-footer-container">
     <div className='test-reports-container'>
       {/* header for desktop  with Logo and components Dashboard, Assessments, Test Reports, Student Reports and Admin */}
       <div className='admin-header-container'>
@@ -229,12 +228,11 @@ function FreshersJuniorTabulation() {
         Freshers Junior Test Tabulation Data
       </h1>
       {/* desktop table container with table of Freshers Junior test data respones */}
-      <div className='d-none d-lg-block text-center'>
+      <div className='desktop-table'>
         {data.length > 0 ? (
           <div
             style={{
               minHeight: 100,
-              width: "95%",
               textAlign: "center",
               margin: "auto",
             }}
@@ -335,7 +333,6 @@ function FreshersJuniorTabulation() {
             ))
           : "No Data Found"}
       </div>
-    </div>
     </div>
     <Footer />
     </div>

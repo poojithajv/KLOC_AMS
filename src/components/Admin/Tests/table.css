@@ -2,9 +2,15 @@
   display:flex;
   flex-direction:column;
   min-height:100vh;
-  
 }
-
+.desktop-table{
+  width:80%;
+}
+@media screen and (max-width:1023px){
+  .desktop-table{
+    display: none;
+  }
+}
 .test-table {
   margin-top: 0px;
   margin-left: 50px;
@@ -25,7 +31,6 @@ table td {
 }
 
 table {
-  width: 100%;
   margin-top: 20px;
   border-collapse: collapse;
 }
@@ -40,12 +45,6 @@ td {
 th {
   background-color: #f2f2f2;
   font-weight: bold;
-}
-
-@media screen and (max-width: 1024px) {
-  .test-table {
-    display: none;
-  }
 }
 @media screen and (max-width: 1023px) {
   .mobile-table {
@@ -87,8 +86,7 @@ th {
 }
 @media screen and (max-width: 300px) {
   .table-data-cont {
-    width: 250px;
-    margin-left: 40px;
+    width: 220px;
   }
 }
 .table-data {

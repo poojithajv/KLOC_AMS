@@ -7,12 +7,20 @@ import Cookies from "js-cookie";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 import Footer from '../Footer/Footer'
+import Dashboard from './Dashboard'
+import SendAssessments from './SendAssessments'
+import TestReports from './TestReports'
+import StudentReports from "./StudentReports";
 import './AdminLogin.css'
 // scopes variable is a google api to get access of google spreadsheets
 const SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
 
 const AdminLogin = () => {
   // usestates to store data responses for all tests 
+  const [isDashboard,setIsDashboard]=useState(false)
+  const [isAssessment,setIsAssessment]=useState(false)
+  const [isTestReports,setIsTestReports]=useState(false)
+  const [isStudentReports,setIsStudentReports]=useState(false)
   const [fresherData,setFresherData]=useState([])
   const [pythonData,setPythonData]=useState([])
   const [fullStackData,setFullStackData]=useState([])
@@ -29,7 +37,6 @@ const AdminLogin = () => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   // navigate varaible used to navigating to different paths
   const navigate=useNavigate()
-
 
 
   useEffect(() => {
@@ -912,11 +919,34 @@ useEffect(()=>{
   let finalData={
     allData,datat
   }
+  const handleDashboard=()=>{
+    setIsDashboard(true)
+    setIsAssessment(false)
+    setIsTestReports(false)
+    setIsStudentReports(false)
+  }
+  const handleAssessment=()=>{
+    setIsDashboard(false)
+    setIsAssessment(true)
+    setIsTestReports(false)
+    setIsStudentReports(false)
+  }
+  const handleTestReports=()=>{
+    setIsDashboard(false)
+    setIsAssessment(false)
+    setIsTestReports(true)
+    setIsStudentReports(false)
+  }
+  const handleStudentReports=()=>{
+    setIsDashboard(false)
+    setIsAssessment(false)
+    setIsTestReports(false)
+    setIsStudentReports(true)
+  }
 
   return (
     <div>
       <div className="admin-login-container">
-        <p>
           {isSignedIn ? (
             // if admin has signedIn, the below code will render
             <div className="admin-header-container">
@@ -927,13 +957,13 @@ useEffect(()=>{
               </div>
               <div className="admin-desktop-header-navbar-container">
                   {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
-                <p onClick={()=>navigate('/dashboard',{state:finalData})} className="admin-desktop-header-navbar-link">Dashboard</p>
+                <p onClick={()=>handleDashboard()} className="admin-desktop-header-navbar-link">Dashboard</p>
                 {/* when clicking this Assessments text, it'll navigates to send assessments route */}
-                <p onClick={()=>navigate('/sendAssessments',{state:finalData})} className="admin-desktop-header-navbar-link">Assessments</p>
+                <p onClick={()=>handleAssessment()} className="admin-desktop-header-navbar-link">Assessments</p>
                 {/* when clicking this Test Reports text, it'll navigates to test reports route */}
-                <p onClick={()=>navigate('/testReports',{state:finalData})} className="admin-desktop-header-navbar-link">Test Reports</p>
+                <p onClick={()=>handleTestReports()} className="admin-desktop-header-navbar-link">Test Reports</p>
                 {/* when clicking this student reports text, it'll navigates to student reports route */}
-                <p onClick={()=>navigate('/studentReports',{state:finalData})} className="admin-desktop-header-navbar-link">Student Reports</p>
+                <p onClick={()=>handleStudentReports()} className="admin-desktop-header-navbar-link">Student Reports</p>
                 {/* when clicking this Sign Out text, it'll navigates to admin login route and agains admin needs to sign in to access all routes */}
                 <p className="admin-desktop-header-navbar-link" onClick={handleSignOut}>Sign Out</p>
               </div>
@@ -942,13 +972,13 @@ useEffect(()=>{
                 <Popup contentStyle={{ width: '70%',backgroundColor:"white",textAlign:'center',display:'flex',flexDirection:'column',justifyContent:'content',alignItems:'center' }} trigger={<button  className="admin-hamburger-btn"><GiHamburgerMenu /></button>} position="bottom right" >
                   <ul className="admin-mobile-hamburger-menu">
                     {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
-                    <li onClick={()=>navigate('/dashboard',{state:finalData})} className='admin-header-navbar-link'>Dashboard</li>
+                    <li onClick={()=>handleDashboard()} className='admin-header-navbar-link'>Dashboard</li>
                     {/* when clicking this Assessments text, it'll navigates to send assessments route */}
-                    <li onClick={()=>navigate('/sendAssessments',{state:finalData})} className='admin-header-navbar-link'>Assessments</li>
+                    <li onClick={()=>handleAssessment()} className='admin-header-navbar-link'>Assessments</li>
                     {/* when clicking this Test Reports text, it'll navigates to test reports route */}
-                    <li onClick={()=>navigate('/testReports',{state:finalData})} className='admin-header-navbar-link'>Test Reports</li>
+                    <li onClick={()=>handleTestReports()} className='admin-header-navbar-link'>Test Reports</li>
                     {/* when clicking this student reports text, it'll navigates to student reports route */}
-                    <li onClick={()=>navigate('/studentReports',{state:finalData})} className='admin-header-navbar-link'>Student Reports</li>
+                    <li onClick={()=>handleStudentReports()} className='admin-header-navbar-link'>Student Reports</li>
                     {/* when clicking this Sign Out text, it'll navigates to admin login route and agains admin needs to sign in to access all routes */}
                     <li onClick={handleSignOut} className='admin-header-navbar-link'>Sign Out</li>
                   </ul>
@@ -969,7 +999,18 @@ useEffect(()=>{
               </button>
             </div>
           )}
-        </p>
+        {isDashboard && (
+          <Dashboard data={finalData}/>
+        )}
+        {isAssessment && (
+          <SendAssessments data={finalData}/>
+        )}
+        {isTestReports && (
+          <TestReports datat={finalData} />
+        )}
+        {isStudentReports && (
+          <StudentReports datat={finalData} />
+        )}
       </div>
       <Footer />
     </div>

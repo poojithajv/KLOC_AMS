@@ -7,13 +7,13 @@ import Cookies from "js-cookie";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
-import Footer from '../Footer/Footer'
 import "./index.css";
 
-const Dashboard = () => {
+const Dashboard = (props) => {
+  const {data}=props
   const location = useLocation();
   const navigate = useNavigate();
-  const [finalData, setFinalData] = useState(location.state || []);
+  const [finalData, setFinalData] = useState(data || []);
   let data1 = finalData?.allData?.flat() || [];
   let data2 = data1.map((item, index) => ({ ...item, id: index + 1 }));
   const [filterData, setFilterData] = useState(data2);
@@ -424,109 +424,6 @@ const Dashboard = () => {
   return (
     <div>
     <div className='dashboard-container'>
-      {/* header for desktop  with Logo and components Dashboard, Assessments, Test Reports, Student Reports and Admin */}
-      <div className="admin-header-container">
-        <div className="admin-header-logo-container">
-          {/* logo */}
-          <img
-            src="https://res.cloudinary.com/de5cu0mab/image/upload/v1688216997/KLoc_Square_Logo_-_400x400_ciw1ej.jpg"
-            alt="logo"
-            style={{ height: "50px", width: "70px", borderRadius: "35px 35px" }}
-            onClick={() => navigate("/")}
-          />
-        </div>
-        <div className="admin-desktop-header-navbar-container">
-          {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
-          <p
-            onClick={() => navigate("/dashboard", { state: finalData })}
-            className="admin-desktop-header-navbar-link"
-          >
-            Dashboard
-          </p>
-          {/* when clicking this Assessments text, it'll navigates to send assessments route */}
-          <p
-            onClick={() => navigate("/sendAssessments", { state: finalData })}
-            className="admin-desktop-header-navbar-link"
-          >
-            Assessments
-          </p>
-          {/* when clicking this Test Reports text, it'll navigates to test reports route */}
-          <p
-            onClick={() => navigate("/testReports", { state: finalData })}
-            className="admin-desktop-header-navbar-link"
-          >
-            Test Reports
-          </p>
-          {/* when clicking this student reports text, it'll navigates to student reports route */}
-          <p
-            onClick={() => navigate("/studentReports", { state: finalData })}
-            className="admin-desktop-header-navbar-link"
-          >
-            Student Reports
-          </p>
-          {/* when clicking this Sign Out text, it'll navigates to admin login route and again admin can access all routes */}
-          <p
-            className="admin-desktop-header-navbar-link"
-            onClick={() => navigate("/adminLogin")}
-          >
-            Admin
-          </p>
-        </div>
-        {/* nav header for mobile  with Logo and components Dashboard, Assessments, Test Reports, Student Reports and Admin */}
-        <div className="admin-mobile-header-navbar-container">
-          <Popup
-            contentStyle={{ width: '70%',backgroundColor:"white",textAlign:'center',display:'flex',flexDirection:'column',justifyContent:'content',alignItems:'center' }}
-            trigger={
-              <button className="admin-hamburger-btn">
-                <GiHamburgerMenu />
-              </button>
-            }
-            position="bottom right"
-          >
-            <ul className="admin-mobile-hamburger-menu">
-              {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
-              <li
-                onClick={() => navigate("/dashboard", { state: finalData })}
-                className="admin-header-navbar-link"
-              >
-                Dashboard
-              </li>
-              {/* when clicking this Assessments text, it'll navigates to send assessments route */}
-              <li
-                onClick={() =>
-                  navigate("/sendAssessments", { state: finalData })
-                }
-                className="admin-header-navbar-link"
-              >
-                Assessments
-              </li>
-              {/* when clicking this Test Reports text, it'll navigates to test reports route */}
-              <li
-                onClick={() => navigate("/testReports", { state: finalData })}
-                className="admin-header-navbar-link"
-              >
-                Test Reports
-              </li>
-              {/* when clicking this student reports text, it'll navigates to student reports route */}
-              <li
-                onClick={() =>
-                  navigate("/studentReports", { state: finalData })
-                }
-                className="admin-header-navbar-link"
-              >
-                Student Reports
-              </li>
-              {/* when clicking this Sign Out text, it'll navigates to admin login route and again admin can access all routes */}
-              <li
-                onClick={() => navigate("/adminLogin")}
-                className="admin-header-navbar-link"
-              >
-                Admin
-              </li>
-            </ul>
-          </Popup>
-        </div>
-      </div>
       <div >
         <h1 className="ams-heading">
           AMS METRICS
@@ -538,6 +435,7 @@ const Dashboard = () => {
               type='date'
               value={startDate}
               className='date-input'
+              style={{marginLeft:'5px'}}
               onChange={(e) => setStartDate(e.target.value)}
             />
           </div>
@@ -547,6 +445,7 @@ const Dashboard = () => {
               type='date'
               value={endDate}
               className='date-input'
+              style={{marginLeft:'5px'}}
               onChange={(e) => setEndDate(e.target.value)}
             />
           </div>
@@ -676,12 +575,12 @@ const Dashboard = () => {
       <div className="dashboard_chart_container">
           {fresher.length ? (
             <div>
-            <Chart
+            <Chart width={250} height={250}
             className="testwisePiechart"
             chartType="PieChart"
             data={fresherPieData}
             options={{
-              title: "Fresher Test Metrics",
+              title: `Fresher Test Metrics: ${fresher.length===1 ? '1 test' : `${fresher.length} tests`}`,
               colors: ["#111359", "#afd25f"],
               legend: "none",
             }}
@@ -706,12 +605,12 @@ const Dashboard = () => {
           ): null}
           {python.length ? (
             <div>
-            <Chart
+            <Chart width={250} height={250}
             className="testwisePiechart"
             chartType="PieChart"
             data={pythonPieData}
             options={{
-              title: "Python Test Metrics",
+              title: `Python Test Metrics: ${python.length===1 ? '1 test' : `${python.length} tests`}`,
               colors: ["#111359", "#afd25f"],
               legend: "none",
             }}
@@ -736,13 +635,13 @@ const Dashboard = () => {
           ) : null}
         {fullStack.length ? (
           <div>
-          <Chart
+          <Chart width={250} height={250}
           className="testwisePiechart"
           chartType="PieChart"
           data={fullStackPieData}
           options={{
-            title: "FullStack Test Metrics",
-            colors: ["#f05232", "#e89510"],
+            title: `FullStack Test Metrics: ${fullStack.length===1 ? '1 test' : `${fullStack.length} tests`}`,
+            colors: ["#0e3ab3", "#b02709"],
             legend: "none",
           }}
         />
@@ -750,14 +649,14 @@ const Dashboard = () => {
         <div className="legend">
           <button
             className="color-name"
-            style={{ backgroundColor: "#f05232" }}
+            style={{ backgroundColor: "#0e3ab3" }}
           ></button>
           <span className="test-name">Java</span>
         </div>
         <div className="legend">
           <button
             className="color-name"
-            style={{ backgroundColor: "#e89510" }}
+            style={{ backgroundColor: "#b02709" }}
           ></button>
           <span className="test-name">React</span>
         </div>
@@ -766,12 +665,12 @@ const Dashboard = () => {
         ): null}
         {java.length ? (
           <div>
-          <Chart
+          <Chart width={250} height={250}
           className="testwisePiechart"
           chartType="PieChart"
           data={javaPieData}
           options={{
-            title: "Java Test Metrics",
+            title: `Java Test Metrics: ${java.length===1 ? '1 test' : `${java.length} tests`}`,
             colors: ["#111359", "#afd25f"],
             legend: "none",
           }}
@@ -796,12 +695,12 @@ const Dashboard = () => {
         ) : null}
         {qa.length ? (
           <div>
-          <Chart
+          <Chart width={250} height={250}
           className="testwisePiechart"
           chartType="PieChart"
           data={qaPieData}
           options={{
-            title: "QA Test Metrics",
+            title: `QA Test Metrics: ${qa.length===1 ? '1 test' : `${qa.length} tests`}`,
             colors: ["#111359", "#afd25f"],
             legend: "none",
           }}
@@ -826,12 +725,12 @@ const Dashboard = () => {
         ) : null} 
         {frontendfresher.length ? (
           <div>
-          <Chart
+          <Chart width={250} height={250}
           className="testwisePiechart"
           chartType="PieChart"
           data={frontendfresherPieData}
           options={{
-            title: "Front End Fresher Test Metrics",
+            title: `Front End Fresher Test Metrics: ${frontendfresher.length===1 ? '1 test' : `${frontendfresher.length} tests`}`,
             colors: ["#111359", "#afd25f"],
             legend: "none",
           }}
@@ -857,12 +756,12 @@ const Dashboard = () => {
         
         {freshersJunior.length ? (
           <div>
-          <Chart
+          <Chart width={250} height={250}
           className="testwisePiechart"
           chartType="PieChart"
           data={freshersJuniorPieData}
           options={{
-            title: "Freshers Junior Test Metrics",
+            title: `Freshers Junior Test Metrics: ${freshersJunior.length===1 ? '1 test' : `${freshersJunior.length} tests`}`,
             colors: ["#111359", "#f553e5"],
             legend: "none",
           }}
@@ -887,12 +786,12 @@ const Dashboard = () => {
         ) : null}
         {merndeveloperjunior.length ? (
           <div>
-          <Chart
+          <Chart width={250} height={250}
           className="testwisePiechart"
           chartType="PieChart"
           data={merndeveloperJuniorPieData}
           options={{
-            title: "MERN Developer Junior Test Metrics",
+            title: `MERN Developer Junior Test Metrics: ${merndeveloperjunior.length===1 ? '1 test' : `${merndeveloperjunior.length} tests`}`,
             colors: ["#111359", "#afd25f"],
             legend: "none",
           }}
@@ -918,12 +817,12 @@ const Dashboard = () => {
         
         {merndeveloperintermediate.length ? (
           <div>
-          <Chart
+          <Chart width={250} height={250}
           className="testwisePiechart"
           chartType="PieChart"
           data={merndeveloperintermediatePieData}
           options={{
-            title: "MERN Developer Intermediate Test Metrics",
+            title: `MERN Developer Intermediate Test Metrics: ${merndeveloperintermediate.length===1 ? '1 test' : `${merndeveloperintermediate.length} tests`}`,
             colors: ["#111359", "#afd25f"],
             legend: "none",
           }}
@@ -949,12 +848,12 @@ const Dashboard = () => {
         
         {shopify.length ? (
           <div>
-          <Chart
+          <Chart width={250} height={250}
           className="testwisePiechart"
           chartType="PieChart"
           data={shopifyPieData}
           options={{
-            title: "Shopify Test Metrics",
+            title: `Shopify Test Metrics: ${shopify.length===1 ? '1 test' : `${shopify.length} tests`}`,
             colors: ["#111359", "#afd25f"],
             legend: "none",
           }}
@@ -979,7 +878,6 @@ const Dashboard = () => {
         ) : null}
       </div>
     </div>
-    <Footer />
     </div>
   );
 };
