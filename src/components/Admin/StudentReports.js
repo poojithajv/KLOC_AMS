@@ -1,7 +1,6 @@
-// import all required packages like react, react-icons, reactjs-popup, js-cookie, react-router-dom and css file StudentReports.css for styling
+// StudentReports component to display all tests data responses in table with filter by email id and date
+// import all required packages like react, js-cookie, react-router-dom, @mui/x-data-grid and css file index.css to render StudentReports component
 import React, { useState, useEffect } from "react";
-import { GiHamburgerMenu } from "react-icons/gi";
-import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import Cookies from "js-cookie";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -10,25 +9,30 @@ import { Button } from "@mui/material";
 import "./index.css";
 
 function StudentReports(props) {
+  // data prop
   const {datat}=props
-  const location = useLocation();
+  // search usestate to store search value
   const [search, setSearch] = useState("");
+  // data usestate to store all tests data responses
   const [data, setData] = useState(datat);
   let data1 = data?.allData?.flat() || [];
 
   let data2 = data1.map((item, index) => ({ ...item, id: index + 1 }));
+  // filterData usestate to store filter data
   const [filterData, setFilterData] = useState(data2);
-
+ // startDate usestate to store start date
   const [startDate, setStartDate] = useState("");
+    // endDate usestate to store the end date
   const [endDate, setEndDate] = useState("");
-
+  // navigate is used to navigating to different routes
   const navigate = useNavigate();
 
+  // handleButtonClick function to navigate to studentChart component with state
   const handleButtonClick = (item) => {
     navigate("/studentChart", { state: item });
-    //console.log(`Button clicked for row with ID: ${id}`);
   };
-
+  
+//  table data
   const columns = [
     {
       field: "id",
@@ -179,20 +183,21 @@ function StudentReports(props) {
     }
   });
 
+  // handleSearch function to set search value 
   const handleSearch = (e) => {
     setSearch(e.target.value);
     if ((e.target.value = "" || e.key === "Backspace" || e.keyCode === 8)) {
       setFilterData(data2);
     }
   };
-
+//  handleKeyDown function to set search value and filterData 
   const handleKeyDown = (e) => {
     if (e.key === "Backspace") {
       setSearch(e.target.value);
       setFilterData(data2);
     }
   };
-
+  // handleFilter function to filter the test respones based on start and end dates
   const handleFilter = () => {
     const filtered = data2.filter((item) => {
       const itemDate = new Date(item.Timestamp);
@@ -204,6 +209,7 @@ function StudentReports(props) {
     setFilterData(filtered);
   };
 
+  // serachData to get filterData by searching email ids of students 
   const searchData = filterData.filter((i) =>
     i.Email_Address.toLowerCase().includes(search.toLowerCase())
   );
@@ -237,6 +243,7 @@ function StudentReports(props) {
             className='input-search input'
           />
         </div>
+        {/* date filter */}
         <div className='date-filter'>
           <div className='display-between'>
             Start Date:{"   "}
@@ -265,6 +272,7 @@ function StudentReports(props) {
             Filter
           </button>
         </div>
+        {/* desktop table with all tests data responses */}
         <div className='d-none d-lg-block'>
           {filterData.length > 0 ? (
             <div style={{ minHeight: 100, width: "95%", margin: "auto" }}>

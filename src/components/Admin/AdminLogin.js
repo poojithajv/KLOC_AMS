@@ -1,4 +1,5 @@
-// import all required packages like react,react-icons,reactjs-popup,js-cookie,uuid,react-router-dom and components like index.css to render AdminLogin component
+// AdminLogin component is about signin of admin and retrieving all test data responses
+// import all required packages like react, react-icons, reactjs-popup, js-cookie, uuid, react-router-dom and components like Dashboard, SendAssessments, TestReports, StudentReports, Footer and css files like index.css and reactjs-popup/dist/index.css to render AdminLogin component
 import React, { useEffect, useState } from "react";
 import {GiHamburgerMenu} from "react-icons/gi"
 import Popup from 'reactjs-popup';
@@ -16,11 +17,12 @@ import './AdminLogin.css'
 const SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
 
 const AdminLogin = () => {
-  // usestates to store data responses for all tests 
+  // usestates to store boolean value of components to render
   const [isDashboard,setIsDashboard]=useState(false)
   const [isAssessment,setIsAssessment]=useState(false)
   const [isTestReports,setIsTestReports]=useState(false)
   const [isStudentReports,setIsStudentReports]=useState(false)
+  // usestates to store data responses for all tests 
   const [fresherData,setFresherData]=useState([])
   const [pythonData,setPythonData]=useState([])
   const [fullStackData,setFullStackData]=useState([])
@@ -900,6 +902,10 @@ useEffect(()=>{
     Cookies.remove("token");
     const authInstance = window.gapi.auth2.getAuthInstance();
     authInstance.signOut();
+    setIsDashboard(false)
+    setIsAssessment(false)
+    setIsTestReports(false)
+    setIsStudentReports(false)
   };
 
   // creates datat object consists of all tests data arrays
@@ -920,24 +926,28 @@ useEffect(()=>{
   let finalData={
     allData,datat
   }
+  // handleDashboard function to set useState of isDashboard to true and others to false
   const handleDashboard=()=>{
     setIsDashboard(true)
     setIsAssessment(false)
     setIsTestReports(false)
     setIsStudentReports(false)
   }
+  // handleAssessment function to set useState of isAssessment to true and others to false
   const handleAssessment=()=>{
     setIsDashboard(false)
     setIsAssessment(true)
     setIsTestReports(false)
     setIsStudentReports(false)
   }
+  // handleTestReports function to set useState of isTestReports to true and others to false
   const handleTestReports=()=>{
     setIsDashboard(false)
     setIsAssessment(false)
     setIsTestReports(true)
     setIsStudentReports(false)
   }
+  // handleStudentReports function to set useState of isStudentReports to true and others to false
   const handleStudentReports=()=>{
     setIsDashboard(false)
     setIsAssessment(false)
@@ -1001,15 +1011,19 @@ useEffect(()=>{
               </button>
             </div>
           )}
+        {/* if isDashboard is true then Dashboard component will render */}
         {isDashboard && (
           <Dashboard data={finalData}/>
         )}
+        {/* if isAssessment is true then SendAssessments component will render */}
         {isAssessment && (
           <SendAssessments data={finalData}/>
         )}
+        {/* if isTestReports is true then TestReports component will render */}
         {isTestReports && (
           <TestReports datat={finalData} />
         )}
+        {/* if isStudentReports is true then StudentReports component will render */}
         {isStudentReports && (
           <StudentReports datat={finalData} />
         )}

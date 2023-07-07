@@ -1,5 +1,6 @@
-// import index.css file for styling
+// import Link file to apply link to AdminUnauthorized component
 import { Link } from "react-router-dom";
+// if admin is not authorized, then the below code will render
 const AdminUnauthorized = () => {
   return (
     <div className='not-found-container'>

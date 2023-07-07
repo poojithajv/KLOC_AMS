@@ -1,10 +1,8 @@
-// import all required packages like react, react-icons, reactjs-popup, @mui/material, react-router-dom, js-cookie to render the TestReports component
+// TestReports Component is about displaying all tests data respones cards
+// import all required packages like react, @mui/material, react-router-dom, js-cookie, Footer component and css files like AdminLogin.css and reactjs-popup/dist/index.css to render the TestReports component
 import React, { useEffect, useState } from "react";
-import { GiHamburgerMenu } from "react-icons/gi";
 import gapi from "gapi-script";
-import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
-// import Navbar from "./Navbar";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -17,9 +15,9 @@ import Footer from '../Footer/Footer'
 import "./AdminLogin.css";
 
 const TestReports = (props) => {
-  // location varaiable to get location of the testReports route and state
+  // datat prop
   const {datat}=props
-  const location = useLocation();
+  // data usestate to store all tests data responses
   const [data, setData] = useState(datat);
   // navigate variable used to naviagating to different routes
   const navigate = useNavigate();
@@ -121,7 +119,7 @@ const TestReports = (props) => {
                   </CardContent>
                 </CardActionArea>
                 <Button
-                  sx={{ margin: "20px",width:'60px',height:'30px',fontSize:'10px' }}
+                  sx={{ margin: "20px",width:'60px',height:'30px',fontSize:'10px',backgroundColor:'#111359' }}
                   variant='contained'
                   // clicking view button it'll navigates to respective test tabulation routes
                   onClick={() =>

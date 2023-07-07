@@ -19,33 +19,6 @@ function Footer() {
             <br />
             <h4>mobile : +91 09663897463</h4>
           </div>
-          {/* <div className='sb__footer-links_div'>
-            <h4>Resources</h4>
-            <a href='/employer'>
-              <p>Resources center</p>
-            </a>
-            <a href='/employer'>
-              <p>testimonials</p>
-            </a>
-            <a href='/employer'>
-              <p>STV</p>
-            </a>
-          </div> */}
-          {/* <div className='sb__footer-links_div'>
-            <h4>Company</h4>
-            <a href='/employer'>
-              <p>About</p>
-            </a>
-            <a href='/employer'>
-              <p>Press</p>
-            </a>
-            <a href='/employer'>
-              <p>Career</p>
-            </a>
-            <a href='/employer'>
-              <p>Contact</p>
-            </a>
-          </div> */}
           <div className='sb__footer-links_div'>
             <h4>Follow Us</h4>
             <div className='social-media'>

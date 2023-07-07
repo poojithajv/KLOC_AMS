@@ -1,10 +1,9 @@
+// this component is about displaying input fields of student to send email in desktop view
+// import react and index.css file to render EachCandidateInputField component
 import React, { useState, useEffect } from "react";
-import Box from "@mui/material/Box";
-import gapi from "gapi-script";
-import TextField from "@mui/material/TextField";
-import PersonPinIcon from "@mui/icons-material/PersonPin";
 import "./index.css";
 const EachCandidateInputField = ({ onInputChange }) => {
+  // inputValues usestate to store name,email,phone and endDate of test of students
   const [inputValues, setInputValues] = useState({
     name: "",
     email: "",
@@ -27,11 +26,7 @@ const EachCandidateInputField = ({ onInputChange }) => {
 
   return (
     <div className="bg-each-candidate-field">
-      <div className="each-candidate-subContainer1">
-        <div className="label-input">
-        <label htmlFor='outlined-basic-1' className="label-assessment">
-          Name:
-        </label>
+        <div className="each-candidate-subContainer2">
         <input
           id="outlined-basic-1"
           placeholder="Name"
@@ -41,11 +36,6 @@ const EachCandidateInputField = ({ onInputChange }) => {
           onChange={(e) => handleInputChange("name", e.target.value)}
           required
         />
-        </div>
-        <div className="label-input">
-        <label htmlFor='outlined-basic-1' className="label-assessment">
-          Email:
-        </label>
         <input
           id="outlined-basic-2"
           placeholder="Email"
@@ -55,13 +45,6 @@ const EachCandidateInputField = ({ onInputChange }) => {
           onChange={(e) => handleInputChange("email", e.target.value)}
           required
         />
-        </div>
-      </div>
-      <div className="each-candidate-subContainer2">
-      <div className="label-input">
-        <label htmlFor='outlined-basic-1' className="label-assessment">
-          Phone:
-        </label>
         <input
           id="outlined-basic-3"
           placeholder="Phone"
@@ -71,11 +54,6 @@ const EachCandidateInputField = ({ onInputChange }) => {
           onChange={(e) => handleInputChange("phone", e.target.value)}
           required
         />
-        </div>
-        <div className="label-input">
-        <label htmlFor='outlined-basic-1' className="label-assessment">
-          Test End Date:
-        </label>
         <input
           id="outlined-basic-4"
           placeholder="Date"
@@ -87,7 +65,6 @@ const EachCandidateInputField = ({ onInputChange }) => {
           required
         />
         </div>
-      </div>
        <hr className="horizontal-line"/> 
     </div>
   );

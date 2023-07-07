@@ -1,4 +1,5 @@
-// import react, react-router-dom packages and index.css file to render FreshersJuniorTabulation component
+// FreshersJuniorTabulation component is about displaying data responses if freshers junior test in table
+// import Footer component, react, react-router-dom packages, gapi-script, react-icons, reactjs-popup, @mui/x-data-grid packages and css files like index.css file and reactjs-popup/dist/index.css file to render FreshersJuniorTabulation component
 import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import gapi from "gapi-script";
@@ -17,6 +18,7 @@ function FreshersJuniorTabulation() {
   // navigate variable used to naviagating to different routes
   const navigate = useNavigate();
 
+  // table data 
   const columns = [
     {
       field: "id",
@@ -24,7 +26,6 @@ function FreshersJuniorTabulation() {
       width: 10,
       headerClassName: "table-header",
       cellClassName: "table-cell",
-      sortable:false
     },
     {
       field: "Timestamp",
@@ -32,7 +33,6 @@ function FreshersJuniorTabulation() {
       width: 160,
       headerClassName: "table-header",
       cellClassName: "table-cell",
-      sortable:false
     },
     {
       field: "Name",
@@ -144,35 +144,7 @@ function FreshersJuniorTabulation() {
           >
             Home
           </p>
-          {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
-          {/* <p
-            onClick={() => navigate("/dashboard", { state: data })}
-            className='admin-desktop-header-navbar-link'
-          >
-            Dashboard
-          </p> */}
-          {/* when clicking this Assessments text, it'll navigates to send assessments route */}
-          {/* <p
-            onClick={() => navigate("/sendAssessments", { state: data })}
-            className='admin-desktop-header-navbar-link'
-          >
-            Assessments
-          </p> */}
-          {/* when clicking this Test Reports text, it'll navigates to test reports route */}
-          {/* <p
-            onClick={() => navigate("/testReports", { state: data })}
-            className='admin-desktop-header-navbar-link'
-          >
-            Test Reports
-          </p> */}
-          {/* when clicking this student reports text, it'll navigates to student reports route */}
-          {/* <p
-            onClick={() => navigate("/studentReports", { state: data })}
-            className='admin-desktop-header-navbar-link'
-          >
-            Student Reports
-          </p> */}
-          {/* when clicking this Sign Out text, it'll navigates to admin login route and again admin can access all routes */}
+          {/* when clicking this Admin text, it'll navigates to admin login route and again admin can access all routes */}
           <p
             className='admin-desktop-header-navbar-link'
             onClick={() => navigate("/adminLogin")}
@@ -199,34 +171,6 @@ function FreshersJuniorTabulation() {
               >
                 Home
               </li>
-              {/* when clicking this Dashboard text, it'll navigates to dashboard route */}
-              {/* <li
-                onClick={() => navigate("/dashboard", { state: data })}
-                className='admin-header-navbar-link'
-              >
-                Dashboard
-              </li> */}
-              {/* when clicking this Assessments text, it'll navigates to send assessments route */}
-              {/* <li
-                onClick={() => navigate("/sendAssessments", { state: data })}
-                className='admin-header-navbar-link'
-              >
-                Assessments
-              </li> */}
-              {/* when clicking this Test Reports text, it'll navigates to test reports route */}
-              {/* <li
-                onClick={() => navigate("/testReports", { state: data })}
-                className='admin-header-navbar-link'
-              >
-                Test Reports
-              </li> */}
-              {/* when clicking this student reports text, it'll navigates to student reports route */}
-              {/* <li
-                onClick={() => navigate("/studentReports", { state: data })}
-                className='admin-header-navbar-link'
-              >
-                Student Reports
-              </li> */}
               {/* when clicking this Sign Out text, it'll navigates to admin login route and again admin can access all routes */}
               <li
                 onClick={() => navigate("/adminLogin")}
