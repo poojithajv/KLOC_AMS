@@ -185,12 +185,8 @@ function Chart() {
         <div className="admin-header-container">
           <div className="admin-header-logo-container">
             {/* logo */}
-            <img
-              src="https://res.cloudinary.com/de5cu0mab/image/upload/v1688216997/KLoc_Square_Logo_-_400x400_ciw1ej.jpg"
-              alt="logo"
-              style={{ height: "50px", width: "70px", borderRadius: "10px" }}
-              onClick={() => navigate("/")}
-            />
+            <img src="https://res.cloudinary.com/de5cu0mab/image/upload/v1688968121/kloc-white-logo_ct8uhz.png" 
+                alt="logo" style={{ height: "120px", width: "120px",marginTop:'10px'}} onClick={()=>navigate('/')}/>
           </div>
           <div className="admin-desktop-header-navbar-container">
             {/* when clicking this Home text, it'll navigates to home route */}

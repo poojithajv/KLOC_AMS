@@ -17,9 +17,9 @@ function Home() {
       <div className='headerContainer'>
         <div className='headerLogoContainer'>
           <img
-            src='https://res.cloudinary.com/de5cu0mab/image/upload/v1688216997/KLoc_Square_Logo_-_400x400_ciw1ej.jpg'
+            src='https://res.cloudinary.com/de5cu0mab/image/upload/v1688968121/kloc-white-logo_ct8uhz.png'
             alt='logo'
-            style={{ height: "50px", width: "70px", borderRadius: "10px" }}
+            style={{ height: "120px", width: "120px",marginTop:'10px'}}
           />
         </div>
         <div className='desktopHeaderNavbarContainer'>
